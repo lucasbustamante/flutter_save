@@ -1,16 +1,28 @@
 # flutter_save
+## Anotações de estudo
 
-A new Flutter project.
+Pag. 8
 
-## Getting Started
+### Shared Preferences
+#### Salvando dados no dispositivo
 
-This project is a starting point for a Flutter application.
+Para salvar informações no dispositivo, precisaremos importar a biblioteca [Shared Preferences](https://pub.dev/packages/shared_preferences)
 
-A few resources to get you started if this is your first Flutter project:
+#### Salvando Dados
+```dart
+final pres = await SharedPreferences.getInstance();
+await pres.setString("nomeChave", "valorSalvo"); //set para salvar
+```
+#### Recuperando Dados
+```dart
+final pres = await SharedPreferences.getInstance();
+var = pres.getString("nomeChave") ?? "valorNulo"; // digite um valor caso seja nulo
+// get para recuperar
+// podemos receber outros valores alem de String
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Removendo Dados
+```dart
+final pres = await SharedPreferences.getInstance();
+pres.remove("nomeChave");
+```
